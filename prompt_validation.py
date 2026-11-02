@@ -1,6 +1,10 @@
 from langchain_core.prompts import PromptTemplate
 
-template = PromptTemplate.from_template("Explain {topic} to a {level}")
+template = PromptTemplate(
+    template="Explain {topic} to a {level}",
+    input_variables = ["topic", "level"],
+    validate_teplate = True
+)
 
 provided_variables = {
     "topic" : "Java Inheritance", "level":"Beginner", "name":"Raj"
@@ -18,4 +22,6 @@ elif extra:
 else:
     prompt = template.format(**provided_variables)
     print(prompt)
+
+
 # prompt = template.format(topic="")
